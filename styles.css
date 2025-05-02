@@ -1,0 +1,11 @@
+#container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    background-color:aliceblue;
+}
+
+#textcontent {
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
