@@ -1,0 +1,4 @@
+# energy is great
+
+Except that it's really hard to make.
+Annnd... we need a lot of it.
