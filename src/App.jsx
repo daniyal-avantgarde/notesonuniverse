@@ -1,12 +1,28 @@
 import ForceGraph2D from 'react-force-graph-2d';
 import React from 'react';
 import './App.css';
+import { Link, Route, Routes } from "react-router-dom"
+
+import Home from "./pages/Home";
+import PageOne from "./pages/PageOne";
 
 function App() {
   return (
     <div>
       <h1>Notes on Universe</h1>
-      <p>Hello!</p>
+      <p>hllo</p>
+
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/pageone">PageOne</Link></li>
+        </ul>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/pageone" element={<PageOne/>}></Route>
+      </Routes>
 
       <Graph></Graph>
       
@@ -17,9 +33,9 @@ function App() {
 function Graph() {
   const data = {
     nodes: [
-      {id:"1",title:"energy"},
-      {id:"2",title:"god"},
-      {id:"3",title:"immortality"}
+      {id:"1",title:"energy.mdx"},
+      {id:"2",title:"god.mdx"},
+      {id:"3",title:"immortality.mdx"}
     ],
     links: [
       {source:"1",target:"2"},
@@ -41,7 +57,7 @@ function Graph() {
   }
 
   function handleNodeClick(node) {
-    window.open(`/essays/${node.title}.md`, '_blank')
+    window.open(`/essays/${node.title}`, "_blank");
   }
 
   return (
@@ -56,7 +72,13 @@ function Graph() {
 export default App;
 
 /*
-To do list:
+use vite's glob import.meta.glob to execute
+for essay in essays_folder import essay
+https://vite.dev/guide/features#glob-import
+
+on button click render that markdown file
+
+TO DO LIST:
 Notes landing page
   Labels on graph
   Links on graph
