@@ -1,37 +1,56 @@
-import ForceGraph2D from 'react-force-graph-2d';
 import React from 'react';
 import './App.css';
 import { Link, Route, Routes } from "react-router-dom"
+import Graph from "./Graph"
 
-import Home from "./pages/Home";
-import PageOne from "./pages/PageOne";
+import Energy from "./pages/energy.mdx"
+import Immortality from "./pages/immortality.mdx"
+import { MDXProvider } from '@mdx-js/react';
 
 function App() {
   return (
     <div>
-      <h1>Notes on Universe</h1>
-      <p>hllo</p>
+      <h1 className="text-center text-9xl">Notes on Universe</h1>
 
       <nav>
+        <h3 className="underline">Navigation links</h3>
         <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/pageone">PageOne</Link></li>
+          <li className="text-blue-600"><Link to="/energy">Energy essay</Link></li>
+          <li className="text-blue-600"><Link to="/immortality">Immortality essay</Link></li>
         </ul>
       </nav>
 
-      <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/pageone" element={<PageOne/>}></Route>
-      </Routes>
+      <br />
+      <br />
 
-      <Graph></Graph>
-      
+      <Routes>
+        <Route 
+        path="/energy"
+        element={<MDXProvider><Energy /></MDXProvider>}></Route>
+        <Route 
+        path="/immortality"
+        element={
+          <div className="prose prose-lg">
+            <MDXProvider><Immortality /></MDXProvider>
+          </div>
+        }></Route>
+      </Routes>   
     </div>
   );
 }
 
-function Graph() {
-  const data = {
+export default App;
+
+/*
+use vite's glob import.meta.glob to execute
+for essay in essays_folder import essay
+https://vite.dev/guide/features#glob-import
+
+on button click render that markdown file
+
+im thinking...
+create
+const data = {
     nodes: [
       {id:"1",title:"energy.mdx"},
       {id:"2",title:"god.mdx"},
@@ -43,40 +62,15 @@ function Graph() {
       {source:"3",target:"1"},
     ]
   }
+nodes=[]
+for file in essays folder:
+  node = create node 
+  node.id = file.name
+  nodes.append(node)
 
-  // information about how to draw the node
-  function nodeCanvasObject(node, ctx, globalScale) {
-    const label = node.id;
-    const fontSize = 12 / globalScale;
-    ctx.fillText(label, node.x + 6, node.y + 6);
-
-    const radius = 5;
-    ctx.beginPath();
-    ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI, false);
-    ctx.fill();
-  }
-
-  function handleNodeClick(node) {
-    window.open(`/essays/${node.title}`, "_blank");
-  }
-
-  return (
-    <ForceGraph2D 
-    graphData={data} 
-    nodeCanvasObject={nodeCanvasObject}
-    onNodeClick={handleNodeClick}
-    />
-  )
-}
-
-export default App;
-
-/*
-use vite's glob import.meta.glob to execute
-for essay in essays_folder import essay
-https://vite.dev/guide/features#glob-import
-
-on button click render that markdown file
+links=[]
+for file in
+const data = [nodes, links]
 
 TO DO LIST:
 Notes landing page
