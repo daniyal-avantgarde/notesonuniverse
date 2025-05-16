@@ -1,42 +1,36 @@
 import React from 'react';
 import './App.css';
-import { Link, Route, Routes } from "react-router-dom"
+import { Link, Route, Routes, Outlet } from "react-router-dom"
 import Graph from "./Graph"
 
 import Energy from "./pages/energy.mdx"
 import Immortality from "./pages/immortality.mdx"
+import God from "./pages/god.mdx"
 import { MDXProvider } from '@mdx-js/react';
 
 function App() {
   return (
     <div>
-      <h1 className="text-center text-9xl">Notes on Universe</h1>
-
-      <nav>
-        <h3 className="underline">Navigation links</h3>
-        <ul>
-          <li className="text-blue-600"><Link to="/energy">Energy essay</Link></li>
-          <li className="text-blue-600"><Link to="/immortality">Immortality essay</Link></li>
-        </ul>
-      </nav>
-
-      <br />
-      <br />
-
       <Routes>
-        <Route 
-        path="/energy"
-        element={<MDXProvider><Energy /></MDXProvider>}></Route>
-        <Route 
-        path="/immortality"
-        element={
-          <div className="prose prose-lg">
-            <MDXProvider><Immortality /></MDXProvider>
-          </div>
-        }></Route>
-      </Routes>   
+        <Route path="/" element={<Layout/>}>
+          <Route path="immortality" element={<div className="prose prose-lg"> <MDXProvider><Immortality /></MDXProvider></div>}/>
+          <Route path="energy" element={<div className="prose prose-lg"> <MDXProvider><Energy /></MDXProvider></div>}/>
+          <Route path="god" element={<div className="prose prose-lg"> <MDXProvider><God /></MDXProvider></div>}/>
+        </Route>
+      </Routes>
     </div>
   );
+}
+
+function Layout() {
+  return (
+    <div>
+      <h1 className="text-center text-9xl">Notes on Universe</h1>
+      <Graph width={window.innerWidth} height={600}/>
+
+      <Outlet />
+    </div>
+  )
 }
 
 export default App;
