@@ -1,0 +1,19 @@
+{
+    "nodes": [
+        {"id": "god", "level": 1},
+        {"id": "immortality", "level": 2},
+        {"id": "history", "level": 3},
+        {"id": "hello", "level": 1},
+        {"id": "girls", "level": 2},
+        {"id": "energy", "level": 1}
+
+    ],
+
+    "links": [
+        {"source": "history", "target": "girls"},
+        {"source": "girls", "target": "immortality"},
+        {"source": "energy", "target": "girls"},
+        {"source": "hello", "target": "girls"}
+    ]
+
+}

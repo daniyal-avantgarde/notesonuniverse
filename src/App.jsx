@@ -2,21 +2,15 @@ import React from 'react';
 import './App.css';
 import { Link, Route, Routes, Outlet } from "react-router-dom"
 import Graph from "./Graph"
+import mdxRoutes from "./mdxRoutes"
 
-import Energy from "./pages/energy.mdx"
-import Immortality from "./pages/immortality.mdx"
-import God from "./pages/god.mdx"
-import { MDXProvider } from '@mdx-js/react';
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Layout/>}>
-          <Route path="immortality" element={<div className="prose prose-lg"> <MDXProvider><Immortality /></MDXProvider></div>}/>
-          <Route path="energy" element={<div className="prose prose-lg"> <MDXProvider><Energy /></MDXProvider></div>}/>
-          <Route path="god" element={<div className="prose prose-lg"> <MDXProvider><God /></MDXProvider></div>}/>
-        </Route>
+        <Route path="/" element={<Layout/>}></Route>
+        {mdxRoutes}
       </Routes>
     </div>
   );
@@ -28,14 +22,23 @@ function Layout() {
       <h1 className="text-center text-9xl">Notes on Universe</h1>
       <Graph width={window.innerWidth} height={600}/>
 
-      <Outlet />
+      {/*
+        <Outlet />
+        */}
     </div>
+  )
+}
+
+function BackHome() {
+  return (
+    <Link to="/"> &lt; Back Home</Link>
   )
 }
 
 export default App;
 
 /*
+
 use vite's glob import.meta.glob to execute
 for essay in essays_folder import essay
 https://vite.dev/guide/features#glob-import
@@ -72,4 +75,15 @@ Notes landing page
   Links on graph
 
 Personal page 
+*/
+
+/*
+modules = []
+for file in folder:
+  const module = await import(`./dir/${file}.js`)
+
+for module in modules:
+
+
+
 */
