@@ -1,38 +1,15 @@
 {
   "nodes": [
-    {
-      "id": "energy",
-      "level": 2
-    },
-    {
-      "id": "girls",
-      "level": 1
-    },
-    {
-      "id": "god",
-      "level": 1
-    },
-    {
-      "id": "hello",
-      "level": 1
-    },
-    {
-      "id": "history",
-      "level": 1
-    },
-    {
-      "id": "immortality",
-      "level": 1
-    }
+    {"id": "energy", "level": 2},
+    {"id": "girls", "level": 2},
+    {"id": "god", "level": 2},
+    {"id": "hello", "level": 2},
+    {"id": "history", "level": 2},
+    {"id": "immortality", "level": 2},
+    {"id": "energy", "level": 2}
   ],
   "links": [
-    {
-      "source": "energy",
-      "target": "immortality"
-    },
-    {
-      "source": "energy",
-      "target": "god"
-    }
+    {"source": "energy", "target": "immortality"},
+    {"source": "god", "target": "history"}
   ]
 }
