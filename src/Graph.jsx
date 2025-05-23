@@ -1,9 +1,8 @@
-import React, { useRef, useEffect, useMemo } from 'react';
+import React, { useRef, useEffect, useMemo, useState } from 'react';
 import ForceGraph2D from 'react-force-graph-2d';
 import { useNavigate } from 'react-router-dom';
-import nodeData from "./pages/nodeData.json"
 
-function Graph({ width, height }) {
+function Graph({width=300, height=300, nodeData={}}) { //default values
 
     /* useMemo(initialise, [data])
     initialise this variable once after render
@@ -21,9 +20,9 @@ function Graph({ width, height }) {
         const radius = 5 + (node.level || 1) * 3;
         ctx.beginPath();
         ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI, false);
-        ctx.fillStyle = node.level === 1 ? '#ffcc00' :
-                        node.level === 2 ? '#ff6600' :
-                        node.level === 3 ? '#cc0000' : '#999';
+        ctx.fillStyle = node.level === 1 ? '#1d3fc4' :
+                        node.level === 2 ? '#1d63c4' :
+                        node.level === 3 ? '#184ded' : '#999';
         ctx.fill();
 
         const label = node.id;

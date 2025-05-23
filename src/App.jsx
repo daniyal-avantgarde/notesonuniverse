@@ -3,15 +3,21 @@ import './App.css';
 import { Link, Route, Routes, Outlet } from "react-router-dom"
 import Graph from "./Graph"
 import mdxRoutes from "./mdxRoutes"
+import components from "./mdxComponents"
+import { MDXProvider } from '@mdx-js/react';
+import God from "./notes/god.mdx"
+import notesData from "./notes/notesData.json"
+import Daniyal from "./Daniyal"
 
 
 function App() {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Layout/>}></Route>
-        {mdxRoutes}
-      </Routes>
+    <div>   
+        <Routes>   
+          <Route path="/" element={<Layout/>}></Route>
+          <Route path="/daniyal" element={<Daniyal/>}></Route>
+          {mdxRoutes}
+        </Routes>   
     </div>
   );
 }
@@ -20,7 +26,11 @@ function Layout() {
   return (
     <div>
       <h1 className="text-center text-9xl">Notes on Universe</h1>
-      <Graph width={window.innerWidth} height={600}/>
+      <Graph width={window.innerWidth} height={600} nodeData={notesData}/>
+
+      <p className="text-center">This blog is written by <Link to="/daniyal" className="text-blue-800">Daniyal Zeeshan</Link></p>
+      
+      
 
       {/*
         <Outlet />

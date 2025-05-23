@@ -1,0 +1,23 @@
+{
+  "nodes": [
+    {"id": "Daniyal Zeeshan", "level": 3},
+    {"id": "People I care about", "level": 2},
+    {"id": "Financial stability", "level": 1},
+    {"id": "Immortality", "level": 1},
+    {"id": "Superintelligence", "level": 1},
+    {"id": "Extraterrestrial colonisation", "level": 1},
+    {"id": "Faster regional/international/space travel", "level": 1},
+    {"id": "Increased economic/technological equality", "level": 1},
+    {"id": "Change the world", "level": 2}
+  ],
+  "links": [
+    {"source": "Daniyal Zeeshan", "target": "People I care about"},
+    {"source": "People I care about", "target": "Financial stability"},
+    {"source": "Change the world", "target": "Superintelligence"},
+    {"source": "Change the world", "target": "Extraterrestrial colonisation"},
+    {"source": "Change the world", "target": "Faster regional/international/space travel"},
+    {"source": "Change the world", "target": "Increased economic/technological equality"},
+    {"source": "Change the world", "target": "Immortality"},
+    {"source": "Immortality", "target": "People I care about"}
+  ]
+}

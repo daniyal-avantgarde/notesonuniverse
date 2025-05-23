@@ -12,9 +12,10 @@ import God from "./pages/god.mdx"
 */
 
 import { MDXProvider } from '@mdx-js/react';
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom";
+import components from "./mdxComponents"
 
-const pages = import.meta.glob("./pages/*.mdx", {eager: true})
+const notes = import.meta.glob("./notes/*.mdx", {eager: true})
 
 /* notes on import.meta.glob()
 import.meta.glob() returns a dictionary [ path: module, path: module, ...]
@@ -28,14 +29,17 @@ typeof module is object
   <Route path="immortality" element={<Immortality />}/>
 */
 
-const mdxRoutes = Object.entries(pages).map(([path, module]) => {
+const mdxRoutes = Object.entries(notes).map(([path, module]) => {
   const Component = module.default;
-  const routePath = path  // example -> "./pages/immortality.mdx"
-  .split('/')             // -> ['.', 'pages', 'immortality.mdx']
+  const routePath = path  // example -> "./notes/immortality.mdx"
+  .split('/')             // -> ['.', 'notes', 'immortality.mdx']
   .pop()                  // -> 'immortality.mdx'
   .replace('.mdx', '')    // -> 'immortality'
 
-  return (<Route path={routePath} element={<Component/>}></Route> )
+  return (
+  <Route path={routePath} element={
+  <Component components={components}/>}></Route> 
+  )
 })
 
 export default mdxRoutes
